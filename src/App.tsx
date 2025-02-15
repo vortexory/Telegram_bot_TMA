@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/HomePage";
+import Claim from "./pages/Claim";
+import Home from "./pages/Home";
 import "./styles/App.css";
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/claim" element={<Claim />} />
       </Routes>
     </div>
   );
