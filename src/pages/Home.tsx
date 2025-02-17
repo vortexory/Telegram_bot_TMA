@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
 import { VectorLeftIcon, VectorRightIcon } from "@/assets/icons";
 import { FootPrint } from "@/assets/imgs";
 
 export default function Home() {
+  const navigate = useNavigate()
   return (
     <div className="relative overflow-y-hidden flex flex-col h-screen">
       {/* Header */}
@@ -40,7 +42,7 @@ export default function Home() {
           <h4 className="text-white text-center pt-[50px] text-[40px] font-semibold">Tap to play</h4>
           <div className="relative flex justify-center pt-[30vh]">
             <div className="absolute left-1/2 top-1/2 mt-[5vh] -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
-            <div className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]"></div>
+            <button className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]" onClick={()=>navigate('/play')}></button>
           </div>
 
           {/* Overlay with Footprint and Icons */}

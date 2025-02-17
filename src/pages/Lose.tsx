@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
 import {ImgKinglion, Feather_down, Feather_up } from "@/assets/imgs";
 
-export default function Claim() {
+export default function Lose() {
   const navigate = useNavigate();
   return (
     <div className="relative overflow-y-hidden flex flex-col justify-center items-center">
       <div className="pt-[50px] w-full items-center px-[20px] pb-5 h-screen flex flex-col justify-between bg-black">
         <div className="flex relative flex-col space-y-1">
           <p className="text-white text-base text-opacity-40 font-semibold">Daily check-in</p>
-          <h4 className="text-white text-[40px] font-bold">Day 1</h4>
+          <h4 className="text-white text-[40px] font-bold">Game Over</h4>
         </div>
         <div className="absolute top-[117px] left-[50%] translate-x-[-50%] w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
         <div className="relative w-[226px] h-[226px]">

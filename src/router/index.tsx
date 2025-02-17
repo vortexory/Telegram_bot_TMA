@@ -2,13 +2,18 @@ import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Claim from '@/pages/Claim'
 import Home from '@/pages/Home'
+import Play from '@/pages/Play'
+import Win from '@/pages/Win'
+import Lose from '@/pages/Lose'
 
 const Router = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/claim" element={<Claim />} />
-            <Route path="/play" element={<Claim />} />
+            <Route path="/play" element={<Play />} />
+            <Route path="/win" element={<Win />} />
+            <Route path="/lose" element={<Lose />} />
             
         </Routes>
     )

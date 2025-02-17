@@ -11,7 +11,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
     const isShowNav = useMemo(() => ['/', '/cards', '/leaders', '/friends', '/quests'].includes(location.pathname), [location.pathname])
     const isAdmin = useMemo(() => location.pathname.includes('/admin'), [location.pathname])
-    console.log(isShowNav, "lsaidjfjasljdfl");
     return (
         <div className="main bg-black">
             {isShowNav && <Nav isAdmin={isAdmin} />}
