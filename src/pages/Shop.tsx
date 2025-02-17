@@ -74,7 +74,7 @@ export default function Shop() {
 
   return (
     <>
-      <div className="bg-[#282c34] relative overflow-y-hidden h-screen pt-[30px] px-5">
+      <div className="bg-[#282c34] relative overflow-y-hidden h-screen pt-[30px] px-5 pb-[50px]">
         {/* Bottom Gradient Overlay */}
         <div className="absolute top-0 left-0 w-full  h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
         {/* Bottom Gradient Overlay */}
