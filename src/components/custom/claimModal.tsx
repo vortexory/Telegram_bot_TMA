@@ -31,10 +31,10 @@ const ClaimModal = React.forwardRef<HTMLDivElement, ClaimModalProps>(
                 src={isOpen.win ? Fire : Foot}
                 alt="logo"
               />
-              <h4 className="text-white text-[28px] font-semibold">
+              <h4 className="text-white text-[32px] font-semibold">
                 {isOpen.win ? "Congratulations" : "Game Over"}
               </h4>
-              <p className="text-white text-[20px] text-opacity-50 font-normal">
+              <p className="text-white text-[24px] text-opacity-50 font-normal">
                 {isOpen.win ? "You win the game" : "You loose the game"}
               </p>
             </div>
