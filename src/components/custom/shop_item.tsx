@@ -2,14 +2,14 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { BackImg } from "./backImg";
 
-export interface CardItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ShopItemProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   img?: string;
   title: string;
   onClick: () => void;
 }
 
-const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
+const ShopItem = React.forwardRef<HTMLDivElement, ShopItemProps>(
   ({ className, img, title, onClick, ...props }, ref) => {
     return (
       <div
@@ -37,6 +37,6 @@ const CardItem = React.forwardRef<HTMLDivElement, CardItemProps>(
   }
 );
 
-CardItem.displayName = "CardItem";
+ShopItem.displayName = "ShopItem";
 
-export { CardItem };
+export { ShopItem };

@@ -8,7 +8,7 @@ import {
 } from "@/assets/imgs";
 import { Drawer } from "@/components/custom/drawer";
 import { CatBtn } from "@/components/custom/catBtn";
-import { CardItem } from "@/components/custom/card_item";
+import { ShopItem } from "@/components/custom/shop_item";
 import { useState } from "react";
 
 const items = [
@@ -56,7 +56,7 @@ const items = [
   },
 ];
 
-export default function Card() {
+export default function Shop() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [index, setIndex] = useState<number | null>(null);
 
@@ -87,7 +87,7 @@ export default function Card() {
           {/* Shop Items */}
           <div className="flex justify-center items-start gap-5 flex-wrap z-20">
             {items.map((item, idx) => (
-              <CardItem
+              <ShopItem
                 img={item.img}
                 title={item.title}
                 key={idx}

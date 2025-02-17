@@ -9,7 +9,7 @@ interface AppLayoutProps {
 const AppLayout = ({ children }: AppLayoutProps) => {
     const location = useLocation()
 
-    const isShowNav = useMemo(() => ['/', '/card', '/leaders', '/friends', '/quests'].includes(location.pathname), [location.pathname])
+    const isShowNav = useMemo(() => ['/', '/shop', '/leaders', '/friends', '/quests'].includes(location.pathname), [location.pathname])
     const isAdmin = useMemo(() => location.pathname.includes('/admin'), [location.pathname])
     return (
         <div className="main bg-black">
