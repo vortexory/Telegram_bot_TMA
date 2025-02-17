@@ -38,7 +38,7 @@ export default function Home() {
         {/* Content with text */}
         <div className="relative w-full h-full z-10 bg-cover bg-center">
           <h4 className="text-white text-center pt-[50px] text-[40px] font-semibold">Tap to play</h4>
-          <div className="relative flex justify-center pt-[30%]">
+          <div className="relative flex justify-center pt-[30vh]">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
             <div className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]"></div>
           </div>
@@ -48,7 +48,7 @@ export default function Home() {
             className="absolute top-0 w-full h-full"
             style={{ backgroundImage: `url(${FootPrint})`, backgroundSize: "cover", backgroundPosition: "center" }}
           >
-            <div className="relative w-full h-full pt-[30%]">
+            <div className="relative w-full h-full pt-[25vh]">
               {/* Left Icons */}
               <div className="absolute left-0 flex flex-col space-y-2">
                 <Image src={VectorLeftIcon} alt="left_1" />
