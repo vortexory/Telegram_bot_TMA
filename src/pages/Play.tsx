@@ -17,13 +17,11 @@ export default function Play() {
   const [num, setNum] = useState(4);
   const [showModal, SetShowModal] = useState({ win: false, lose: false });
   const [pos, setPos] = useState({
-    position: "pt-[15vh]",
     direction: Boxlion_left,
   });
 
-  const changePos = (position: string, direction: string, count: number) => {
-    console.log(count, num);
-    setPos({ position, direction });
+  const changePos = (direction: string, count: number) => {
+    setPos({ direction });
     if (count === -1 && num === 1) {
       setNum(0);
       SetShowModal({ win: false, lose: true });
@@ -84,7 +82,7 @@ export default function Play() {
               10/<span className="text-[#767676]">1000</span>
             </h5>
           </div>
-          <div className={`relative flex justify-center ${pos.position}`}>
+          <div className="relative flex justify-center pt-[10vh]">
             {/* Background Glow */}
             <div className="absolute left-1/2 top-1/2 mt-[5vh] -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
 
@@ -127,7 +125,7 @@ export default function Play() {
             <div className="flex justify-around">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-0", Boxlion_left, 1)}
+                onClick={() => changePos( Boxlion_left, 1)}
                 aria-label="Move Left"
               >
                 <svg
@@ -145,7 +143,7 @@ export default function Play() {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-0", Boxlion_right, -1)}
+                onClick={() => changePos(Boxlion_right, -1)}
                 aria-label="Move Right"
               >
                 <svg
@@ -165,7 +163,7 @@ export default function Play() {
             <div className="flex justify-between">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[15vh]", Boxlion_left, 1)}
+                onClick={() => changePos(Boxlion_left, 1)}
                 aria-label="Move Left Again"
               >
                 <svg
@@ -183,7 +181,7 @@ export default function Play() {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[15vh]", Boxlion_right, -1)}
+                onClick={() => changePos(Boxlion_right, -1)}
                 aria-label="Move Right Again"
               >
                 <svg
