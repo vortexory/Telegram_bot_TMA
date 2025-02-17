@@ -8,7 +8,7 @@ import {
 } from "@/assets/imgs";
 import { Drawer } from "@/components/custom/drawer";
 import { CatBtn } from "@/components/custom/catBtn";
-import { ShopItem } from "@/components/custom/shop_item";
+import { CardItem } from "@/components/custom/card_item";
 import { useState } from "react";
 
 const items = [
@@ -56,7 +56,7 @@ const items = [
   },
 ];
 
-export default function Shop() {
+export default function Card() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [index, setIndex] = useState<number | null>(null);
 
@@ -76,9 +76,9 @@ export default function Shop() {
     <>
       <div className="bg-[#282c34] relative overflow-y-hidden h-screen pt-[30px] px-5">
         {/* Bottom Gradient Overlay */}
-        {/* <div className="absolute top-0 left-0 w-full  h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div> */}
+        <div className="absolute top-0 left-0 w-full  h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
         {/* Bottom Gradient Overlay */}
-        {/* <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div> */}
+        <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
         {/* Main Content */}
         <div className="flex h-full flex-col w-full gap-[30px] overflow-y-auto">
           {/* Navigation Toggle */}
@@ -87,7 +87,7 @@ export default function Shop() {
           {/* Shop Items */}
           <div className="flex justify-center items-start gap-5 flex-wrap z-20">
             {items.map((item, idx) => (
-              <ShopItem
+              <CardItem
                 img={item.img}
                 title={item.title}
                 key={idx}

@@ -59,8 +59,8 @@ const Nav = ({ isAdmin }: NavProps) => {
 
                     {/* Cards */}
                     <NavLink
-                        to="/cards"
-                        className={`flex items-center gap-2.5 ${pathName === "/cards" ? "text-white" : "text-white opacity-30"
+                        to="/card"
+                        className={`flex items-center gap-2.5 ${pathName === "/card" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
