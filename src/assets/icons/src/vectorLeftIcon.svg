@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="139" viewBox="0 0 77 139" fill="none">
+  <foreignObject x="-190" y="-50" width="316.037" height="239"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(25px);height:100%;width:100%"></div></foreignObject><path opacity="0.5" data-figma-bg-blur-radius="50" d="M29.1832 70.9328V139M-140 4H-85.0995L74 98.1597" stroke="url(#paint0_linear_1_265)" stroke-width="8"/>
+  <defs>
+    <linearGradient id="paint0_linear_1_265" x1="-30.5543" y1="4" x2="-30.5543" y2="139" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F39932"/>
+      <stop offset="1" stop-color="#F39932" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>

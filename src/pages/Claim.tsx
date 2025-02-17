@@ -3,7 +3,7 @@ import { Image } from "@/components/custom/image";
 import {ImgKinglion, Feather_down, Feather_up } from "@/assets/imgs";
 export default function Claim() {
   return (
-    <header className="App-header relative overflow-y-hidden">
+    <div className="relative overflow-y-hidden flex flex-col justify-center items-center">
       <div className="pt-[50px] w-full items-center px-[20px] pb-5 h-screen flex flex-col justify-between bg-black">
         <div className="flex relative flex-col space-y-1">
           <p className="text-white text-base text-opacity-40 font-semibold">Daily check-in</p>
@@ -24,6 +24,6 @@ export default function Claim() {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }

@@ -31,12 +31,12 @@ const Nav = ({ isAdmin }: NavProps) => {
     return (
         <>
             {/* {isAdmin && ( */}
-            <div className="fixed bottom-0 z-10 w-full px-5 h-16">
-                <div className="font-bold rounded-[15px] flex bg-black bg-opacity-30 justify-between p-3">
+            <div className="fixed bottom-0 z-[9999] w-full px-5 h-16">
+                <div className="font-bold rounded-[15px] flex bg-black bg-opacity-25 backdrop-blur-[24.6px] justify-between p-3">
                     {/* Main */}
                     <NavLink
                         to="/"
-                        className={`flex items-center gap-2.5 ${pathName === "/" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
@@ -48,7 +48,7 @@ const Nav = ({ isAdmin }: NavProps) => {
                     {/* Quests */}
                     <NavLink
                         to="/quests"
-                        className={`flex items-center gap-2.5 ${pathName === "/quests" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/quests" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
@@ -60,7 +60,7 @@ const Nav = ({ isAdmin }: NavProps) => {
                     {/* Cards */}
                     <NavLink
                         to="/cards"
-                        className={`flex items-center gap-2.5 ${pathName === "/cards" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/cards" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
@@ -72,7 +72,7 @@ const Nav = ({ isAdmin }: NavProps) => {
                     {/* Shop */}
                     <NavLink
                         to="/shop"
-                        className={`flex items-center gap-2.5 ${pathName === "/shop" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/shop" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
@@ -84,7 +84,7 @@ const Nav = ({ isAdmin }: NavProps) => {
                     {/* Friends */}
                     <NavLink
                         to="/friends"
-                        className={`flex items-center gap-2.5 ${pathName === "/friends" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/friends" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
@@ -96,7 +96,7 @@ const Nav = ({ isAdmin }: NavProps) => {
                     {/* Leaders */}
                     <NavLink
                         to="/leaders"
-                        className={`flex items-center gap-2.5 ${pathName === "/leaders" ? "text-white" : "text-gray-600"
+                        className={`flex items-center gap-2.5 ${pathName === "/leaders" ? "text-white" : "text-white opacity-30"
                             }`}
                     >
                         <div className="flex flex-col items-center">
