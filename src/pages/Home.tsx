@@ -39,7 +39,7 @@ export default function Home() {
         <div className="relative w-full h-full z-10 bg-cover bg-center">
           <h4 className="text-white text-center pt-[50px] text-[40px] font-semibold">Tap to play</h4>
           <div className="relative flex justify-center pt-[30vh]">
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
+            <div className="absolute left-1/2 top-1/2 mt-[5vh] -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
             <div className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]"></div>
           </div>
 
@@ -50,13 +50,13 @@ export default function Home() {
           >
             <div className="relative w-full h-full pt-[25vh]">
               {/* Left Icons */}
-              <div className="absolute left-0 flex flex-col space-y-2">
+              <div className="absolute left-0 flex flex-col space-y-8">
                 <Image src={VectorLeftIcon} alt="left_1" />
                 <Image src={VectorLeftIcon} alt="left_2" />
               </div>
 
               {/* Right Icons */}
-              <div className="absolute right-0 flex flex-col space-y-2">
+              <div className="absolute right-0 flex flex-col space-y-8">
                 <Image src={VectorRightIcon} alt="right_1" />
                 <Image src={VectorRightIcon} alt="right_2" />
               </div>
