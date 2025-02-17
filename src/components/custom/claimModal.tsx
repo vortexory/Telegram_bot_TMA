@@ -25,20 +25,20 @@ const ClaimModal = React.forwardRef<HTMLDivElement, ClaimModalProps>(
         <div className="relative w-full h-full">
           <div className="bg-[rgba(17,11,3,0.40)] backdrop-blur-[25px] w-full h-full"></div>
           <div className="pt-[50px] px-[20px] pb-5 w-full h-full absolute top-0 flex flex-col justify-between items-center">
-            <div className="flex relative flex-col justify-center items-center pt-[10vh] space-y-1">
+            <div className="flex relative flex-col justify-center items-center pt-[3vh] space-y-1">
               <Image
-                className="w-[226px] h-[226px]"
+                className="w-[200px] h-[200px]"
                 src={isOpen.win ? Fire : Foot}
                 alt="logo"
               />
-              <h4 className="text-white text-[32px] font-semibold">
+              <h4 className="text-white text-[28px] font-semibold">
                 {isOpen.win ? "Congratulations" : "Game Over"}
               </h4>
-              <p className="text-white text-[24px] text-opacity-50 font-normal">
+              <p className="text-white text-[20px] text-opacity-50 font-normal">
                 {isOpen.win ? "You win the game" : "You loose the game"}
               </p>
             </div>
-            <div className=" space-y-5 w-[226px] ">
+            <div className=" space-y-5 w-[200px] ">
               <div className="flex flex-col justify-center items-center space-y-1">
                 <p className="text-white text-center font-normal text-[16px] text-opacity-40 leading-[16px] font-sans">
                   You reward:
