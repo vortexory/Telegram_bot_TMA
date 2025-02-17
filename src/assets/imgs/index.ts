@@ -5,6 +5,8 @@ import Shape_footprint from './src/img_shape_footprint.png';
 import FootPrint from './src/img_footprint.png'
 import Boxlion_left from './src/img_boxlion_left.png'
 import Boxlion_right from './src/img_boxlion_right.png'
+import Fire from './src/img_fire.png'
+import Foot from './src/img_foot.png'
 
 export {
     ImgKinglion,
@@ -13,5 +15,7 @@ export {
     Shape_footprint,
     FootPrint,
     Boxlion_left,
-    Boxlion_right
+    Boxlion_right,
+    Fire,
+    Foot
 }
