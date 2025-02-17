@@ -14,7 +14,7 @@ const ShopItem = React.forwardRef<HTMLDivElement, ShopItemProps>(
     return (
       <div
         className={cn(
-          "w-[160px] h-[215px] flex flex-col bg-[#F399321a] rounded-[15px] p-[10px]",
+          "w-[160px] h-[230px] flex flex-col bg-[#F399321a] rounded-[15px] p-[10px]",
           className
         )}
         ref={ref}
