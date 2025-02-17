@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "@/components/custom/image";
-import {ImgKinglion, Vector_down, Vector_up } from "@/assets/imgs";
+import {ImgKinglion, Feather_down, Feather_up } from "@/assets/imgs";
 export default function Claim() {
   return (
     <header className="App-header relative overflow-y-hidden">
@@ -19,8 +19,8 @@ export default function Claim() {
           <h5 className="text-[32px] text-white font-bold">200 $King</h5>
           <div className="flex w-full flex-col space-y-1 relative">
             <button className="w-full bg-[#F39932] h-[55px] text-white text-2xl font-bold rounded-xl py-2 px-4">Claim</button>
-            <Image className="absolute top-0 left-0" src={Vector_down} alt="vector_down" />
-            <Image className="absolute top-0 right-0" src={Vector_up} alt="vector_up" />
+            <Image className="absolute top-0 left-0" src={Feather_down} alt="vector_down" />
+            <Image className="absolute top-0 right-0" src={Feather_up} alt="vector_up" />
           </div>
         </div>
       </div>

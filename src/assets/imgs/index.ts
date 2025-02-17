@@ -1,9 +1,9 @@
 import ImgKinglion from './src/img_kinglion.png'
-import Vector_down from './src/Vector_down.svg'
-import Vector_up from './src/Vector_up.svg'
+import Feather_down from './src/img_feather_down.png'
+import Feather_up from './src/img_feather_up.png'
 
 export {
     ImgKinglion,
-    Vector_down,
-    Vector_up
+    Feather_down,
+    Feather_up
 }
