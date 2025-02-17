@@ -2,25 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
 import { Button } from "@/components/custom/button";
+import { ClaimModal } from "@/components/custom/claimModal";
 import {
   VectorLeftIcon,
   VectorRightIcon,
   HeartEmptyIcon,
   HeartIcon,
 } from "@/assets/icons";
-import {
-  FootPrint,
-  Boxlion_left,
-  Boxlion_right,
-  Fire,
-  Feather_down,
-  Feather_up,
-} from "@/assets/imgs";
+import { FootPrint, Boxlion_left, Boxlion_right } from "@/assets/imgs";
 
 export default function Play() {
   const navigate = useNavigate();
   const [health, SetHealth] = useState([1, 1, 1, 1]);
   const [num, setNum] = useState(4);
+  const [showModal, SetShowModal] = useState({ win: false, lose: false });
   const [pos, setPos] = useState({
     position: "pt-[15vh]",
     direction: Boxlion_left,
@@ -31,55 +26,16 @@ export default function Play() {
     setPos({ position, direction });
     if (count === -1 && num === 1) {
       setNum(0);
+      SetShowModal({ win: false, lose: true });
       alert("Game Over");
     } else if (count === 1 && num === 9) {
       setNum(10);
+      SetShowModal({ win: true, lose: false });
       alert("Congratulations");
-    } else setNum(num + count);
-  };
-
-  const WinModal = () => {
-    return (
-      <div className="pt-[50px] w-full items-center px-[20px] pb-5 h-screen flex flex-col justify-between bg-black">
-        <div className="flex relative flex-col justify-center items-center space-y-1">
-          <Image className="w-[226px] h-[226px]" src={Fire} alt="logo" />
-          <h4 className="text-white text-[32px] font-semibold">
-            Congratulations
-          </h4>
-          <p className="text-white text-[24px] text-opacity-50 font-normal">
-            You win the game
-          </p>
-        </div>
-        <div className=" space-y-5 w-[226px] ">
-          <div className="flex flex-col justify-center items-center space-y-2">
-            <p className="text-white text-center font-normal text-[16px] text-opacity-40 leading-[16px] font-sans">
-              You reward:
-            </p>
-            <h5 className="w-[125px] text-center py-1 rounded-[80px] border-[#F39932] border-t-2 border-t-[#F39932] bg-[rgba(243,153,50,0.10)]">
-              5 TON
-            </h5>
-          </div>
-          <div className="flex w-full flex-col space-y-1 relative">
-            <button
-              className="w-full bg-[#F39932] h-[50px] text-white text-[24px] font-medium rounded-xl py-2 px-4"
-              onClick={() => navigate("/")}
-            >
-              Claim
-            </button>
-            <Image
-              className="absolute top-0 left-0"
-              src={Feather_down}
-              alt="vector_down"
-            />
-            <Image
-              className="absolute top-0 right-0"
-              src={Feather_up}
-              alt="vector_up"
-            />
-          </div>
-        </div>
-      </div>
-    );
+    } else {
+      setNum(num + count);
+      SetShowModal({ win: false, lose: false });
+    }
   };
 
   return (
@@ -136,7 +92,7 @@ export default function Play() {
             <div className="relative flex items-center space-x-4">
               <Image
                 src={pos.direction}
-                className="z-[100]"
+                className="z-[50]"
                 alt="Boxlion Left"
               />
             </div>
@@ -167,7 +123,7 @@ export default function Play() {
           </div>
 
           {/* Button Section */}
-          <div className="fixed bottom-0 w-full px-[20px] pb-[20px] z-[1000]">
+          <div className="fixed bottom-0 w-full px-[20px] pb-[20px] z-[51]">
             <div className="flex justify-around">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
@@ -249,7 +205,7 @@ export default function Play() {
       </div>
 
       {/* Win Modal */}
-      {/* <WinModal/> */}
+      <ClaimModal isOpen={showModal} />
     </div>
   );
 }
