@@ -22,7 +22,7 @@ export default function Play() {
   const [health, SetHealth] = useState([1, 1, 1, 1]);
   const [num, setNum] = useState(4);
   const [pos, setPos] = useState({
-    position: "pt-[18vh]",
+    position: "pt-[15vh]",
     direction: Boxlion_left,
   });
 
@@ -32,7 +32,7 @@ export default function Play() {
     if (count === -1 && num === 1) {
       setNum(0);
       alert("Game Over");
-    } else if (count == 1 && num == 9) {
+    } else if (count === 1 && num === 9) {
       setNum(10);
       alert("Congratulations");
     } else setNum(num + count);
@@ -115,11 +115,11 @@ export default function Play() {
         {/* Content */}
         <div className="relative w-full h-full z-10 bg-cover bg-center">
           <div>
-            <p className="text-white text-center pt-[50px] text-[40px] font-semibold flex justify-center">
+            <p className="text-white text-center pt-[2%] text-[40px] font-semibold flex justify-center">
               {health.map((item, index) => (
                 <Image
                   key={index}
-                  src={item == 1 ? HeartIcon : HeartEmptyIcon}
+                  src={item === 1 ? HeartIcon : HeartEmptyIcon}
                   alt="heart"
                 ></Image>
               ))}
@@ -139,8 +139,6 @@ export default function Play() {
                 className="z-[100]"
                 alt="Boxlion Left"
               />
-
-              {/* <Image src={Boxlion_right} className="" alt="Boxlion Right" /> */}
             </div>
           </div>
 
@@ -153,7 +151,7 @@ export default function Play() {
               backgroundPosition: "center",
             }}
           >
-            <div className="relative w-full h-full pt-[20vh]">
+            <div className="relative w-full h-full pt-[15vh]">
               {/* Left Icons */}
               <div className="absolute left-0 flex flex-col space-y-2">
                 <Image src={VectorLeftIcon} alt="Vector Left Icon 1" />
@@ -168,11 +166,13 @@ export default function Play() {
             </div>
           </div>
 
-          <div className="fixed bottom-0 w-full px-[20px] pb-[20px]">
+          {/* Button Section */}
+          <div className="fixed bottom-0 w-full px-[20px] pb-[20px] z-[1000]">
             <div className="flex justify-around">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[4vh]", Boxlion_left, 1)}
+                onClick={() => changePos("pt-0", Boxlion_left, 1)}
+                aria-label="Move Left"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +189,8 @@ export default function Play() {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[4vh]", Boxlion_right, -1)}
+                onClick={() => changePos("pt-0", Boxlion_right, -1)}
+                aria-label="Move Right"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +209,8 @@ export default function Play() {
             <div className="flex justify-between">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[18vh]", Boxlion_left, 1)}
+                onClick={() => changePos("pt-[15vh]", Boxlion_left, 1)}
+                aria-label="Move Left Again"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +227,8 @@ export default function Play() {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos("pt-[18vh]", Boxlion_right, -1)}
+                onClick={() => changePos("pt-[15vh]", Boxlion_right, -1)}
+                aria-label="Move Right Again"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
