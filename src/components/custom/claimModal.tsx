@@ -48,7 +48,9 @@ const ClaimModal = React.forwardRef<HTMLDivElement, ClaimModalProps>(
                     5 TON
                   </h5>
                 ) : (
-                  <h5 className="text-white font-semibold text-[36px]">1000 $King</h5>
+                  <h5 className="text-white font-semibold text-[36px]">
+                    1000 $King
+                  </h5>
                 )}
               </div>
               <div className="flex w-full flex-col space-y-1 relative">

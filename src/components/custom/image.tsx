@@ -1,12 +1,12 @@
-import * as React from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cn } from "@/lib/utils";
 
 export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-  src: string
-  width?: number | string
-  height?: number | string
-  alt: string
-  className?: string
+  src: string;
+  width?: number | string;
+  height?: number | string;
+  alt: string;
+  className?: string;
 }
 
 const Image = React.forwardRef<HTMLImageElement, ImageProps>(
@@ -21,10 +21,10 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
         alt={alt}
         {...props}
       />
-    )
+    );
   }
-)
+);
 
-Image.displayName = "Image"
+Image.displayName = "Image";
 
-export { Image } 
+export { Image };

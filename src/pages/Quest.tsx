@@ -1,9 +1,7 @@
-import { IoIosArrowForward } from "react-icons/io";
-
 import { BackImg } from "@/components/custom/backImg";
-
-import { FootPrint } from "@/assets/imgs";
 import { CatBtn } from "@/components/custom/catBtn";
+import { FootPrint } from "@/assets/imgs";
+import { IoIosArrowForward } from "react-icons/io";
 
 const tasks = [
   {
@@ -128,7 +126,9 @@ const Quests = () => {
                     <div className="w-[45px] h-[45px] rounded-[5px] bg-[#F39932]"></div>
                     <div className="flex flex-col items-start">
                       <p className="text-base font-medium">{item.name}</p>
-                      <p className="text-xs font-normal opacity-40">{item.points} points</p>
+                      <p className="text-xs font-normal opacity-40">
+                        {item.points} points
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-row items-center">
@@ -137,7 +137,7 @@ const Quests = () => {
                         Check
                       </button>
                     )}
-                    <IoIosArrowForward className="text-[20px] opacity-40"/>
+                    <IoIosArrowForward className="text-[20px] opacity-40" />
                   </div>
                   <div></div>
                 </div>
@@ -147,7 +147,7 @@ const Quests = () => {
         </div>
       </div>
 
-      {/* Bottom Gradient Overlay */}
+      {/* Bottom Gradient-1 Overlay */}
       <div className="h-[30px] w-full absolute bottom-0 left-0 bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
     </div>
   );

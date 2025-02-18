@@ -57,7 +57,7 @@ const items = [
   },
 ];
 
-export default function Shop() {
+const Shop = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [index, setIndex] = useState<number | null>(null);
 
@@ -78,7 +78,7 @@ export default function Shop() {
     setTimeout(() => {
       setIndex(null);
     }, 200);
-  }
+  };
 
   return (
     <>
@@ -120,7 +120,7 @@ export default function Shop() {
         ></div>
         <div className="absolute z-[10] top-[101px] left-1/2 transform -translate-x-1/2 w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
 
-        {/* Bottom Gradient Overlay */}
+        {/* Bottom Gradient-1 Overlay */}
         <div className="h-[30px] w-full absolute bottom-0 left-0 bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
       </div>
 
@@ -140,4 +140,6 @@ export default function Shop() {
       )}
     </>
   );
-}
+};
+
+export default Shop;

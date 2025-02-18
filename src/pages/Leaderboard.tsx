@@ -1,6 +1,6 @@
-import { FootPrint, Small_footprint } from "@/assets/imgs";
 import { BackImg } from "@/components/custom/backImg";
 import { Image } from "@/components/custom/image";
+import { FootPrint, Small_footprint } from "@/assets/imgs";
 import { FaUser } from "react-icons/fa6";
 
 const items = [
@@ -48,7 +48,7 @@ const items = [
   },
 ];
 
-export default function Leaderboard() {
+const Leaderboard = () => {
   return (
     <div className="relative h-screen pt-[30px] overflow-hidden">
       {/* Background Gradient Overlay */}
@@ -131,8 +131,10 @@ export default function Leaderboard() {
       {/* Additional Blur Overlay */}
       <div className="absolute top-[51px] left-1/2 transform -translate-x-1/2 w-[331px] h-[982px] bg-[#F39932] blur-[200px] opacity-30 z-6"></div>
 
-      {/* Bottom Gradient Overlay */}
+      {/* Bottom Gradient-1 Overlay */}
       <div className="absolute bottom-0 left-0 w-full h-[30px] bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
     </div>
   );
-}
+};
+
+export default Leaderboard;

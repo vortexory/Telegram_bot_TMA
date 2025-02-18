@@ -1,11 +1,10 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
-import { VectorLeftIcon, VectorRightIcon } from "@/assets/icons";
 import { FootPrint } from "@/assets/imgs";
+import { VectorLeftIcon, VectorRightIcon } from "@/assets/icons";
 
-export default function Home() {
-  const navigate = useNavigate()
+const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative overflow-y-hidden flex flex-col h-screen">
       {/* Header */}
@@ -39,16 +38,25 @@ export default function Home() {
 
         {/* Content with text */}
         <div className="relative w-full h-full z-10 bg-cover bg-center">
-          <h4 className="text-white text-center pt-[50px] text-[40px] font-semibold">Tap to play</h4>
+          <h4 className="text-white text-center pt-[50px] text-[40px] font-semibold">
+            Tap to play
+          </h4>
           <div className="relative flex justify-center pt-[15vh]">
             <div className="absolute left-1/2 top-1/2 mt-[5vh] -translate-x-1/2 -translate-y-1/2 z-[1] w-[165px] h-[165px] bg-[#F39932] rounded-full blur-[59px]"></div>
-            <button className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]" onClick={()=>navigate('/play')}></button>
+            <button
+              className="z-10 w-[177px] h-[177px] rounded-[15px] bg-[#F39932]"
+              onClick={() => navigate("/play")}
+            ></button>
           </div>
 
           {/* Overlay with Footprint and Icons */}
           <div
             className="absolute top-0 w-full h-full"
-            style={{ backgroundImage: `url(${FootPrint})`, backgroundSize: "cover", backgroundPosition: "center" }}
+            style={{
+              backgroundImage: `url(${FootPrint})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
             <div className="relative w-full h-full pt-[15vh]">
               {/* Left Icons */}
@@ -65,8 +73,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );
-}
+};
+
+export default Home;

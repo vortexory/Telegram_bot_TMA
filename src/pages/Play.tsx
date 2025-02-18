@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
 import { Button } from "@/components/custom/button";
@@ -11,7 +11,7 @@ import {
 } from "@/assets/icons";
 import { FootPrint, Boxlion_left, Boxlion_right } from "@/assets/imgs";
 
-export default function Play() {
+const Play = () => {
   const navigate = useNavigate();
   const [health, SetHealth] = useState([1, 1, 1, 1]);
   const [num, setNum] = useState(4);
@@ -125,7 +125,7 @@ export default function Play() {
             <div className="flex justify-around">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos( Boxlion_left, 1)}
+                onClick={() => changePos(Boxlion_left, 1)}
                 aria-label="Move Left"
               >
                 <svg
@@ -206,4 +206,6 @@ export default function Play() {
       <ClaimModal isOpen={showModal} />
     </div>
   );
-}
+};
+
+export default Play;

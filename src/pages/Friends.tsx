@@ -1,11 +1,10 @@
-import { StarIcon, UserBgIcon, Small_footprint } from "@/assets/imgs";
+import { useState } from "react";
 import { BackImg } from "@/components/custom/backImg";
 import { Button } from "@/components/custom/button";
 import { Image } from "@/components/custom/image";
-import { useState } from "react";
+import { StarIcon, UserBgIcon, Small_footprint } from "@/assets/imgs";
 import { FaUser, FaCheck } from "react-icons/fa6";
 import { IoCopy } from "react-icons/io5";
-
 interface Friend {
   img: string;
   name: string;
@@ -88,7 +87,7 @@ const items: Friend[] = [
 
 // const items: Friend[] = [];
 
-export default function Friends() {
+const Friends = () => {
   const [copy, setCopy] = useState(false);
   const text = "t.me/jhsOJHDSLKApWOFKKFKSIJW";
 
@@ -99,6 +98,7 @@ export default function Friends() {
       setCopy(false);
     }, 2000);
   };
+
   return (
     <div className="bg-[#0F0902] relative text h-screen pt-[30px] overflow-hidden">
       {/* Background Gradient Overlay */}
@@ -239,8 +239,10 @@ export default function Friends() {
         </div>
       </div>
 
-      {/* Bottom Gradient Overlay */}
+      {/* Bottom Gradient-1 Overlay */}
       <div className="absolute bottom-0 left-0 w-full h-[30px] bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
     </div>
   );
-}
+};
+
+export default Friends;

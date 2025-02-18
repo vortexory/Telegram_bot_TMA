@@ -19,7 +19,7 @@ import User_avatar from "./src/img_user.png";
 import Small_footprint from "./src/img_small_footprint.png";
 import UserBgIcon from "./src/img_user_bg.png";
 import StarIcon from "./src/img_star.png";
-import CopyIcon from './src/img_copy.png'
+import CopyIcon from "./src/img_copy.png";
 
 export {
   ImgKinglion,
@@ -43,5 +43,5 @@ export {
   Small_footprint,
   UserBgIcon,
   StarIcon,
-  CopyIcon
+  CopyIcon,
 };
