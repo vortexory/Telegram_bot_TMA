@@ -21,7 +21,7 @@ const ShopItem = React.forwardRef<HTMLDivElement, ShopItemProps>(
         {...props}
       >
          <BackImg>
-          <div className="flex justify-center items-center h-[145px] bg-[#F399321a] rounded-[15px]">
+          <div className="flex justify-center items-center h-[145px] rounded-[15px] bg-[rgba(243,153,50,0.10)] backdrop-blur-[25px]">
             {img && <img src={img} alt="item" />}
           </div>
         </BackImg>
