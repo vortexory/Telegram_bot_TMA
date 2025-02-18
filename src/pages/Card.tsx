@@ -40,7 +40,7 @@ const Card = () => {
         }}
       ></div>
       <div className="absolute top-[101px] left-1/2 transform -translate-x-1/2 w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
-      <div className="flex flex-col pt-0 px-5 py-4 h-full justify-between">
+      <div className="flex flex-col pt-0 px-5 pb-2 h-full justify-between">
         <div className="z-[100]">
           <div className="flex flex-row items-center gap-2">
             <IoIosArrowBack
@@ -52,7 +52,7 @@ const Card = () => {
             <FaUser className="text-[35px] text-blue-500 bg-white rounded-full pl-[5px] pr-[8px] z-20" />
             <p className="text-[16px] font-medium">Username</p>
           </div>
-          <div className="my-4">
+          <div className="my-[10px]">
             <BackImg round="rounded-[15px]">
               <p className="text-white p-[15px] text-center leading-[130%] font-medium h-full">
                 Play the game, earn points, get <br></br>characters and become
