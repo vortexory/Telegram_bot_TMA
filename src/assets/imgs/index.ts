@@ -7,7 +7,6 @@ import Boxlion_left from "./src/img_boxlion_left.png";
 import Boxlion_right from "./src/img_boxlion_right.png";
 import Fire from "./src/img_fire.png";
 import Foot from "./src/img_foot.png";
-
 import Item_back from "./src/img_item_back.png";
 import Item_clock from "./src/img_item_clock.png";
 import Item_double from "./src/img_item_double.png";
@@ -17,6 +16,7 @@ import Item_light from "./src/img_item_light.png";
 import Item_secret from "./src/img_item_secret.png";
 import Cancel_btn from "./src/img_cancel_btn.png";
 import User_avatar from "./src/img_user.png";
+import Small_footprint from "./src/img_small_footprint.png";
 
 export {
   ImgKinglion,
@@ -37,4 +37,5 @@ export {
   Item_secret,
   Cancel_btn,
   User_avatar,
+  Small_footprint,
 };

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Claim from '@/pages/Claim'
 import Home from '@/pages/Home'
 import Play from '@/pages/Play'
 import Shop from '@/pages/Shop'
+import Leaderbord from '@/pages/Leaderbord'
 
 const Router = () => {
     return (
@@ -12,6 +13,7 @@ const Router = () => {
             <Route path="/claim" element={<Claim />} />
             <Route path="/play" element={<Play />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/leaders" element={<Leaderbord />} />
         </Routes>
     )
 }
