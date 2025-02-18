@@ -40,7 +40,7 @@ const Card = () => {
         }}
       ></div>
       <div className="absolute top-[101px] left-1/2 transform -translate-x-1/2 w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
-      <div className="flex flex-col pt-0 p-5 h-full justify-between">
+      <div className="flex flex-col pt-0 px-5 py-4 h-full justify-between">
         <div className="z-[100]">
           <div className="flex flex-row items-center gap-2">
             <IoIosArrowBack
