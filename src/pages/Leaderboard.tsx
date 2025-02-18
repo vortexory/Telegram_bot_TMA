@@ -52,7 +52,7 @@ export default function Leaderboard() {
   return (
     <div className="relative h-screen pt-[30px] overflow-hidden">
       {/* Background Gradient Overlay */}
-      <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,153,50,0.5),_rgba(243,153,50,0.1))]"></div>
+      <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-[100px] bg-[radial-gradient(ellipse_at_center,_rgba(243,153,50,0.5),_rgba(243,153,50,0.1))]"></div>
 
       {/* Main Content */}
       <div className="flex h-full flex-col w-full gap-[30px]">
