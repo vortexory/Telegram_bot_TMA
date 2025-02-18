@@ -26,7 +26,7 @@ const Card = () => {
   };
 
   return (
-    <div className=" relative overflow-y-hidden h-screen pt-[30px] p-5 w-screen">
+    <div className="relative h-screen pt-[30px] overflow-hidden">
       {/* Top Gradient Overlay */}
       <div className="absolute top-[-46px] left-0 w-full rounded-[390px]  h-[161px] blur-[100px] bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
       {/* Bottom Gradient Overlay */}
@@ -40,7 +40,7 @@ const Card = () => {
         }}
       ></div>
       <div className="absolute top-[101px] left-1/2 transform -translate-x-1/2 w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
-      <div className="flex flex-col h-full justify-between">
+      <div className="flex flex-col pt-0 p-5 h-full justify-between">
         <div className="z-[100]">
           <div className="flex flex-row items-center gap-2">
             <IoIosArrowBack
@@ -52,16 +52,16 @@ const Card = () => {
             <FaUser className="text-[35px] text-blue-500 bg-white rounded-full pl-[5px] pr-[8px] z-20" />
             <p className="text-[16px] font-medium">Username</p>
           </div>
-          <div className="my-5">
-            <BackImg className="" round="rounded-[15px]">
-              <p className="text-white p-[20px] text-center leading-[130%] font-medium h-full">
+          <div className="my-4">
+            <BackImg round="rounded-[15px]">
+              <p className="text-white p-[15px] text-center leading-[130%] font-medium h-full">
                 Play the game, earn points, get <br></br>characters and become
                 the coolest <br></br>player in King Leon!
               </p>
             </BackImg>
           </div>
-          <BackImg className="h-[390px] z-[100]" round="rounded-[15px]">
-            <div className="flex flex-row h-full p-[10px] gap-[10px]">
+          <BackImg className="z-[100]" round="rounded-[15px]">
+            <div className="flex flex-row h-full p-[8px] gap-[8px]">
               <div className="flex flex-col justify-end w-full items-center">
                 <h2 className="text-[16px] font-semibold leading-[120%]">
                   Skin Name
@@ -83,19 +83,19 @@ const Card = () => {
                 )}
               </div>
               <div className="flex-grow">
-                <div className="flex flex-wrap w-[165px] justify-around gap-2">
+                <div className="flex flex-wrap w-[155px] justify-around gap-2">
                   {skins.map((item, idx) =>
                     index === idx ? (
                       <BackImg
                         round="rounded-[5px]"
-                        className="w-[73px] h-[117px]"
+                        className="w-[73px] h-[100px]"
                         key={idx}
                       >
                         <div></div>
                       </BackImg>
                     ) : (
                       <div
-                        className="w-[73px] h-[117px] rounded-[5px] bg-[#F399321a] cursor-pointer"
+                        className="w-[73px] h-[100px] rounded-[5px] bg-[#F399321a] cursor-pointer"
                         key={idx}
                         onClick={() => setIndex(idx)}
                       ></div>

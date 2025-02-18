@@ -82,22 +82,21 @@ const Shop = () => {
 
   return (
     <>
-      <div className="relative overflow-y-hidden h-screen pt-[30px] px-5 pb-[50px]">
+      <div className="relative h-screen pt-[30px] overflow-hidden">
         {/* Bottom Gradient Overlay */}
         <div className="absolute top-0 left-0 w-full  h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
         {/* Bottom Gradient Overlay */}
         <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
         {/* Main Content */}
-        <div className="flex h-full flex-col w-full gap-[30px] overflow-y-auto">
+        <div className="flex h-full flex-col w-full px-5 gap-[30px] overflow-y-auto">
           {/* Navigation Toggle */}
           <CatBtn
             firstTitle="Boosters"
             lastTitle="Currency"
             className="sticky top-[0] z-[1000]"
           />
-
           {/* Shop Items */}
-          <div className="flex justify-center items-start gap-5 flex-wrap pb-[50px] z-20">
+          <div className="flex justify-center items-start gap-5 flex-wrap pb-[80px] z-20">
             {items.map((item, idx) => (
               <ShopItem
                 img={item.img}
