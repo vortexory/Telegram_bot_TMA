@@ -90,18 +90,11 @@ const items: Friend[] = [
 
 export default function Friends() {
   const [copy, setCopy] = useState(false);
-  const text=  "t.me/jhsOJHDSLKApWOFKKFKSIJW"
+  const text = "t.me/jhsOJHDSLKApWOFKKFKSIJW";
 
   const onClipSave = () => {
     setCopy(true);
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        alert("Copied!");
-      })
-      .catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
+    navigator.clipboard.writeText(text);
     setTimeout(() => {
       setCopy(false);
     }, 2000);
@@ -188,12 +181,12 @@ export default function Friends() {
                   </div>
                 </div>
                 {copy ? (
-                  <Button className="w-[51px] h-full bg-[#F39932] rounded-[15px] text-white">
+                  <Button className="mr-[-1px] w-[53px] h-full bg-[#F39932] rounded-[15px] text-white">
                     <FaCheck className="text-[30px]" />
                   </Button>
                 ) : (
                   <Button
-                    className="w-[51px] h-full bg-[#F39932] rounded-[15px] text-white"
+                    className="mr-[-1px] w-[53px] h-full bg-[#F39932] rounded-[15px] text-white"
                     onClick={onClipSave}
                   >
                     <IoCopy className="text-[30px]" />
