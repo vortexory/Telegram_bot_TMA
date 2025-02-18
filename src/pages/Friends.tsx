@@ -173,7 +173,7 @@ const Friends = () => {
                 <div className="flex items-center p-[10px]">
                   <div className="text-left pl-[6px]">
                     <p className="text-[10px] opacity-40 tracking-[-0.2px]">
-                      Your link1
+                      Your link
                     </p>
                     <h5 className="text-[14px] font-medium tracking-[-0.28px]">
                       t.me/jhsOJHDSLKApWOFKKFKSIJW
