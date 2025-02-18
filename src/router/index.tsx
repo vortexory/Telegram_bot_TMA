@@ -6,6 +6,7 @@ import Play from '@/pages/Play'
 import Shop from '@/pages/Shop'
 import Leaderboard from '@/pages/Leaderboard'
 import Friends from '@/pages/Friends'
+import Quests from '@/pages/Quest'
 
 const Router = () => {
     return (
@@ -16,6 +17,7 @@ const Router = () => {
             <Route path="/shop" element={<Shop />} />
             <Route path="/leaders" element={<Leaderboard />} />
             <Route path="/friends" element={<Friends />} />
+            <Route path="/quests" element={<Quests />} />
         </Routes>
     )
 }
