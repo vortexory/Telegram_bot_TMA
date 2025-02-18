@@ -4,7 +4,8 @@ import Claim from '@/pages/Claim'
 import Home from '@/pages/Home'
 import Play from '@/pages/Play'
 import Shop from '@/pages/Shop'
-import Leaderbord from '@/pages/Leaderbord'
+import Leaderboard from '@/pages/Leaderboard'
+import Friends from '@/pages/Friends'
 
 const Router = () => {
     return (
@@ -13,7 +14,8 @@ const Router = () => {
             <Route path="/claim" element={<Claim />} />
             <Route path="/play" element={<Play />} />
             <Route path="/shop" element={<Shop />} />
-            <Route path="/leaders" element={<Leaderbord />} />
+            <Route path="/leaders" element={<Leaderboard />} />
+            <Route path="/friends" element={<Friends />} />
         </Routes>
     )
 }

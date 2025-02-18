@@ -4,22 +4,22 @@ import { cn } from "@/lib/utils";
 export interface BackImgProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   className?: string;
   children: React.ReactNode;
+  round?: string;
 }
 
 const BackImg = React.forwardRef<HTMLDivElement, BackImgProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, children, round, ...props }, ref) => {
     return (
       <div
         className={cn(
-          "rounded-[15px] p-px bg-gradient-to-b from-[#F39932] to-transparent",
-          className
+          " p-px bg-gradient-to-b from-[#F39932] to-transparent",
+          className,
+          round
         )}
         ref={ref}
         {...props}
       >
-        <div className={cn("bg-[#71471e] rounded-[15px] h-full")}>
-          {children}
-        </div>
+        <div className={cn("bg-[#442c14]  h-full", round)}>{children}</div>
       </div>
     );
   }

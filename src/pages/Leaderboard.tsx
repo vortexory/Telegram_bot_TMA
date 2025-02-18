@@ -1,13 +1,4 @@
-import {
-  Item_clock,
-  Item_double,
-  Item_heart,
-  Item_fire,
-  Item_light,
-  Item_secret,
-  FootPrint,
-  Small_footprint,
-} from "@/assets/imgs";
+import { FootPrint, Small_footprint } from "@/assets/imgs";
 import { BackImg } from "@/components/custom/backImg";
 import { Image } from "@/components/custom/image";
 import { FaUser } from "react-icons/fa6";
@@ -59,12 +50,12 @@ const items = [
 
 export default function Leaderboard() {
   return (
-    <div className="relative h-screen pt-[30px] pb-[50px] overflow-hidden">
+    <div className="relative h-screen pt-[30px] overflow-hidden">
       {/* Background Gradient Overlay */}
       <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,153,50,0.5),_rgba(243,153,50,0.1))]"></div>
 
       {/* Main Content */}
-      <div className="flex h-full flex-col w-full overflow-y-auto gap-[30px]">
+      <div className="flex h-full flex-col w-full gap-[30px]">
         {/* Leaderboard Section */}
         <div className="relative">
           <h4 className="text-[24px] text-white font-semibold text-center">
@@ -95,18 +86,15 @@ export default function Leaderboard() {
             </div>
           </div>
         </div>
-        <div className="px-5 ">
+        <div className="px-5 h-full">
           <h5 className="text-[16px] text- text-left font-medium text-white">
             0.0M holders
           </h5>
-          <div>
-            {/* {items.map((data, index) => (d
-              <div key={index}>{data.no}</div>
-            ))} */}
+          <div className="h-full overflow-y-auto pb-[250px]">
             <div className="relative gap-[10px] flex flex-col pb-[20px]">
               {items.map((data, index) => (
-                <BackImg key={index}>
-                  <div className="relative rounded-[15px] border border-[#F39932] bg-[rgba(243,153,50,0.10)] backdrop-blur-[25px] text-white px-[10px] py-[12px] flex justify-between items-center z-20">
+                <BackImg round="rounded-[15px]" key={index}>
+                  <div className="relative rounded-[15px] bg-[rgba(243,153,50,0.10)] backdrop-blur-[25px] text-white px-[10px] py-[12px] flex justify-between items-center z-20">
                     {/* User Info */}
                     <div className="flex items-center">
                       <FaUser
@@ -120,11 +108,11 @@ export default function Leaderboard() {
                     <h5 className="font-semibold text-[20px] text-right">
                       {data.no === 1
                         ? "🥇"
-                        : "#" + data.no && data.no === 2
+                        : data.no === 2
                         ? "🥈"
-                        : "#" + data.no && data.no === 3
+                        : data.no === 3
                         ? "🥉"
-                        : "#" + data.no}
+                        : `#${data.no}`}
                     </h5>
                   </div>
                 </BackImg>
@@ -141,7 +129,7 @@ export default function Leaderboard() {
       ></div>
 
       {/* Additional Blur Overlay */}
-      <div className="absolute top-[51px] left-1/2 transform -translate-x-1/2 w-[331px] h-[982px] bg-[#F39932] blur-[200px] opacity-60 z-6"></div>
+      <div className="absolute top-[51px] left-1/2 transform -translate-x-1/2 w-[331px] h-[982px] bg-[#F39932] blur-[200px] opacity-30 z-6"></div>
 
       {/* Bottom Gradient Overlay */}
       <div className="absolute bottom-0 left-0 w-full h-[30px] bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>

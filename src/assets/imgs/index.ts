@@ -17,6 +17,8 @@ import Item_secret from "./src/img_item_secret.png";
 import Cancel_btn from "./src/img_cancel_btn.png";
 import User_avatar from "./src/img_user.png";
 import Small_footprint from "./src/img_small_footprint.png";
+import UserBg from "./src/img_user_bg.png";
+import Star from "./src/img_star.png";
 
 export {
   ImgKinglion,
@@ -38,4 +40,6 @@ export {
   Cancel_btn,
   User_avatar,
   Small_footprint,
+  UserBg,
+  Star,
 };

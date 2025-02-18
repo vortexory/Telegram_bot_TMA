@@ -39,7 +39,7 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
           className
         )}
       >
-        <div className="absolute top-0 left-0 bg-[#25180a7e] backdrop-blur-[25px] w-full h-full"></div>
+        <div className="absolute rounded-t-[15px] top-0 left-0 bg-[#25180a7e] backdrop-blur-[25px] w-full h-full"></div>
         <button className="absolute top-5 right-5" onClick={onClose}>
           <img src={Cancel_btn} alt="btn" />
         </button>

@@ -126,7 +126,7 @@ export default function Shop() {
 
       {/* Drawer Component */}
       {index !== null && (
-        <div className="absolute bottom-0 w-full z-[9999]">
+        <div className="absolute bottom-0 w-full z-[9999] rounded-t-[15px]">
           <Drawer
             img={items[index]?.img}
             title={items[index]?.title}
