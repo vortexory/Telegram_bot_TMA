@@ -17,13 +17,13 @@ To get started, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/heischichou/React-Shadcn-UI-Template
+    git clone https://github.com/vortexory/Telegram_bot_TMA
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd React-Shadcn-UI-Template
+    cd Telegram_bot_TMA
     ```
 
 3. Install the dependencies:
@@ -72,4 +72,4 @@ The project structure follows a standard React application layout:
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
+This project is licensed under the MIT License.
