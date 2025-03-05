@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { BackImg } from "./backImg";
+import { BackImgShop } from "./backImgShop";
+import { Button } from "./button";
 
 export interface ShopItemProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -14,24 +15,24 @@ const ShopItem = React.forwardRef<HTMLDivElement, ShopItemProps>(
     return (
       <div
         className={cn(
-          "w-[160px] h-[230px] flex flex-col bg-[#F399321a] rounded-[15px] p-[10px]",
+          "w-[160px] h-[230px] flex flex-col bg-[#F399321a] rounded-[5px] p-[10px] backdrop-blur-[100px] leading-[1]",
           className
         )}
         ref={ref}
         {...props}
       >
-        <BackImg round="rounded-[15px]">
-          <div className="flex justify-center items-center h-[145px] rounded-[15px] bg-[rgba(243,153,50,0.10)] backdrop-blur-[25px]">
+        <BackImgShop round="rounded-[5px]">
+          <div className="flex justify-center w-full items-center h-[145px] rounded-[5px] bg-[rgba(243,153,50,0.10)] backdrop-blur-[25px]">
             {img && <img src={img} alt="item" />}
           </div>
-        </BackImg>
-        <p className="text-white mt-[6px]">{title}</p>
-        <button
+        </BackImgShop>
+        <p className="text-white pt-[6px] pb-[10px]">{title}</p>
+        <Button
           onClick={onClick}
-          className="flex items-center bg-[#F39932] rounded-[5px] text-white h-[30px] px-[57px] py-[7px]"
+          className="flex items-center bg-[#F39932] text-[16px] rounded-[5px] text-white py-[7px] "
         >
           Buy
-        </button>
+        </Button>
       </div>
     );
   }

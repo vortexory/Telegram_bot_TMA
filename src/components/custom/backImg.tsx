@@ -19,7 +19,7 @@ const BackImg = React.forwardRef<HTMLDivElement, BackImgProps>(
         ref={ref}
         {...props}
       >
-        <div className={cn("bg-[#442c14]  h-full", round)}>{children}</div>
+        <div className={cn("bg-[rgb(39,24,09)] h-full", round)}>{children}</div>
       </div>
     );
   }

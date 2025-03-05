@@ -1,67 +1,70 @@
-import { useState } from "react";
-import {
-  Item_clock,
-  Item_double,
-  Item_heart,
-  Item_fire,
-  Item_light,
-  Item_secret,
-  FootPrint,
-} from "@/assets/imgs";
+import { useState, useEffect } from "react";
+import { FootPrint } from "@/assets/imgs";
 import { Drawer } from "@/components/custom/drawer";
 import { CatBtn } from "@/components/custom/catBtn";
 import { ShopItem } from "@/components/custom/shop_item";
+import axios from "axios";
 
-const items = [
-  {
-    img: Item_double,
-    title: "x2 Coins",
-    cost: 200,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-  {
-    img: Item_heart,
-    title: "Heart",
-    cost: 100,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-  {
-    img: Item_secret,
-    title: "Bomb Shield",
-    cost: 300,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-  {
-    img: Item_fire,
-    title: "Fire Boost",
-    cost: 400,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-  {
-    img: Item_light,
-    title: "Lightning Boost",
-    cost: 500,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-  {
-    img: Item_clock,
-    title: "Time Extension",
-    cost: 600,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consequat ex, sit",
-  },
-];
+interface ShopCard {
+  itemname: string;
+  id: number;
+  imageurl: string;
+}
+
+interface CardDetail {
+  itemname: string;
+  description: string;
+  price: number;
+  imageurl: string;
+}
 
 const Shop = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [index, setIndex] = useState<number | null>(null);
+  const [shopCards, setShopCards] = useState<ShopCard[]>([]);
+  const [cardDetail, setCardDetail] = useState<CardDetail | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    const fetchShopCards = async () => {
+      try {
+        const response = await axios.get(
+          "https://simon.billtears76.workers.dev/item/info"
+        );
+        setShopCards(response.data.items);
+      } catch (err) {
+        setError("Failed to fetch users.");
+      } 
+    };
+
+    fetchShopCards();
+  }, []);
+
+  useEffect(() => {
+    setIndex(index);
+  }, [index]);
+
+  useEffect(() => {
+    if (index !== null) {
+      const fetchCardDetail = async () => {
+        try {
+          const response = await axios.post(
+            "https://simon.billtears76.workers.dev/item/item-info",
+            { itemId: index }
+          );
+          setCardDetail(response.data.item);
+        } catch (err) {
+          setError("Failed to fetch card details.");
+        }
+      };
+
+      fetchCardDetail();
+    }
+  }, [index]);
+
+  if (error) return <p>{error}</p>;
 
   const handleDrawerOpen = (idx: number) => {
+    setCardDetail(null);
     setIndex(idx);
     setDrawerOpen(true);
   };
@@ -82,11 +85,7 @@ const Shop = () => {
 
   return (
     <>
-      <div className="relative h-screen pt-[30px] overflow-hidden">
-        {/* Bottom Gradient Overlay */}
-        <div className="absolute top-0 left-0 w-full  h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
-        {/* Bottom Gradient Overlay */}
-        <div className="absolute bottom-[-67px] left-0 w-full h-[161px] blur-lg bg-[radial-gradient(ellipse_at_center,_rgba(243,_153,_50,_0.5),_rgba(243,_153,_50,_0.1))]"></div>
+      <div className="bg-[#0F0902] relative h-screen pt-[30px] overflow-hidden">
         {/* Main Content */}
         <div className="flex h-full flex-col w-full px-5 gap-[30px] overflow-y-auto">
           {/* Navigation Toggle */}
@@ -96,41 +95,46 @@ const Shop = () => {
             className="sticky top-[0] z-[1000]"
           />
           {/* Shop Items */}
-          <div className="flex justify-center items-start gap-5 flex-wrap pb-[80px] z-20">
-            {items.map((item, idx) => (
+          <div className="relative flex justify-center items-start gap-5 flex-wrap pb-[80px] z-20">
+            {shopCards.map((item, idx) => (
               <ShopItem
-                img={item.img}
-                title={item.title}
+                img={item.imageurl}
+                title={item.itemname}
                 key={idx}
-                onClick={() => handleDrawerOpen(idx)}
+                onClick={() => handleDrawerOpen(item.id)}
               />
             ))}
           </div>
         </div>
 
+        {/* Top Effect Overlay */}
+        <div className="absolute top-0 left-0 w-full  h-[161px] rounded-[390px] bg-[rgba(243,153,50,0.7)] blur-[100px]"></div>
+
+        {/* Bottom Gradient Overlay */}
+        <div className="absolute bottom-[-67px] left-0 w-full h-[161px] rounded-[390px] blur-[100px] bg-[rgba(243,153,50,0.7)]"></div>
+
         {/* FootPrint Effect */}
         <div
-          className="absolute top-0 w-full h-full"
+          className="absolute top-0 w-full z-[1] h-full"
           style={{
             backgroundImage: `url(${FootPrint})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute z-[10] top-[101px] left-1/2 transform -translate-x-1/2 w-[270px] h-[804px] bg-[#F39932] blur-[200px] opacity-30"></div>
 
         {/* Bottom Gradient-1 Overlay */}
-        <div className="h-[30px] w-full absolute bottom-0 left-0 bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
+        <div className="h-[84px] w-full absolute bottom-0 left-0 bg-gradient-to-b from-transparent via-black/60 to-black/60 z-10"></div>
       </div>
 
       {/* Drawer Component */}
-      {index !== null && (
+      {index !== null && cardDetail && (
         <div className="absolute bottom-0 w-full z-[9999] rounded-t-[15px]">
           <Drawer
-            img={items[index]?.img}
-            title={items[index]?.title}
-            description={items[index]?.description}
-            cost={items[index]?.cost}
+            img={cardDetail.imageurl}
+            title={cardDetail.itemname}
+            description={cardDetail.description}
+            cost={cardDetail.price}
             isOpen={drawerOpen}
             onClose={handleDrawerClose}
             onSubmit={handleBuy}

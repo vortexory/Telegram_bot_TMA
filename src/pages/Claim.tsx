@@ -1,9 +1,28 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/custom/image";
 import { ImgKinglion, Feather_down, Feather_up } from "@/assets/imgs";
+import { TelegramContext, TelegramUser } from '../contexts/TelegramContext';
+import axios from "axios";
 
 const Claim = () => {
   const navigate = useNavigate();
+  const currentUser = useContext<TelegramUser | null>(TelegramContext);
+  const displayName = currentUser?.username || currentUser?.first_name || 'Guest';
+
+  const getClaim = async () => {
+    try {
+      const response = await axios.post(
+        "https://simon.billtears76.workers.dev/score/claim_daily_reward",
+        { username: displayName }
+      );
+      console.log(response);
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to claim daily reward:", error);
+    }
+  };
+
   return (
     <div className="relative overflow-y-hidden flex flex-col justify-center items-center">
       <div className="pt-[50px] w-full items-center px-[20px] pb-5 h-screen flex flex-col justify-between bg-black">
@@ -28,7 +47,7 @@ const Claim = () => {
           <div className="flex w-full flex-col space-y-1 relative">
             <button
               className="w-full bg-[#F39932] h-[55px] text-white text-2xl font-bold rounded-xl py-2 px-4"
-              onClick={() => navigate("/")}
+              onClick={() => getClaim()}
             >
               Claim
             </button>

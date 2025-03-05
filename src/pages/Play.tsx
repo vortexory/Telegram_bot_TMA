@@ -1,48 +1,263 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { Image } from "@/components/custom/image";
 import { Button } from "@/components/custom/button";
 import { ClaimModal } from "@/components/custom/claimModal";
+import { TelegramContext, TelegramUser } from '../contexts/TelegramContext';
+
 import {
   VectorLeftIcon,
   VectorRightIcon,
   HeartEmptyIcon,
   HeartIcon,
 } from "@/assets/icons";
+
 import { FootPrint, Boxlion_left, Boxlion_right } from "@/assets/imgs";
+import coin from "@/components/items/Coin";
+import booster from "@/components/items/Booster";
 
 const Play = () => {
-  const navigate = useNavigate();
-  const [health, SetHealth] = useState([1, 1, 1, 1]);
-  const [num, setNum] = useState(4);
-  const [showModal, SetShowModal] = useState({ win: false, lose: false });
-  const [pos, setPos] = useState({
-    direction: Boxlion_left,
-  });
+  const fianllyScore = 1000;
 
-  const changePos = (direction: string, count: number) => {
-    setPos({ direction });
-    if (count === -1 && num === 1) {
-      setNum(0);
-      SetShowModal({ win: false, lose: true });
-      alert("Game Over");
-    } else if (count === 1 && num === 9) {
-      setNum(10);
-      SetShowModal({ win: true, lose: false });
-      alert("Congratulations");
-    } else {
-      setNum(num + count);
-      SetShowModal({ win: false, lose: false });
+  interface BoosterIcon {
+    url: string;
+    wid: number;
+    score: string;
+  }
+
+  const [time, setTime] = useState(0);
+  const [boosterIcons, setBoosterIcons] = useState<BoosterIcon[]>([]);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [speed, setSpeed] = useState(3000);
+  const [previousLocation, setPreviousLocation] = useState(1000);
+
+  const [showingItems, setShowingItems] = useState<{ id: string, item: React.ReactNode, wid: number, top: number, pos: number, location: number, score: any, url: any }[]>([]);
+  const [health, setHealth] = useState([1, 1, 1, 1]);
+  const [showModal, setShowModal] = useState({ win: false, lose: false });
+
+  const [pos, setPos] = useState({ direction: Boxlion_left });
+  const [boosterScore2x, setBoosterScore2x] = useState(false);
+  const [boosterShield, setBoosterShield] = useState(false);
+
+  const currentUser = useContext<TelegramUser | null>(TelegramContext);
+  const displayName = currentUser?.username || currentUser?.first_name || 'Guest';
+  const avatarUrl = currentUser?.photo_url || "https://i.postimg.cc/YSm0rKS7/User-35.png";
+
+  const winOrFailModal = (str: string) => {
+    if (str === 'win') {
+      setShowModal({ win: true, lose: false });
+      return
+    } else if (str === 'lose') {
+      setShowModal({ win: false, lose: true });
+      return
     }
+  };  
+
+
+  const changePos = (direction: string, count: number, position: number) => {
+    // 1 : 1 = 1
+    // 1 : -1 = 0
+    // -1 : 1 = 3
+    // -1 : -1 = 2
+    setPos({ direction });
+    [...showingItems].forEach((item) => {
+      if (((count === 1 && position === 1) && item.location === 1) ||
+        ((count === 1 && position === -1) && item.location === 0) ||
+        ((count === -1 && position === 1) && item.location === 3) ||
+        ((count === -1 && position === -1) && item.location === 2)
+      ) {
+        if (item.wid > 70 && item.wid < 90) {
+          setShowingItems((prevItems) =>
+            prevItems.filter(it => it !== item) // Remove this coin
+          );
+
+          if (typeof item.score == `number`) {   // coin
+            if (currentScore + item.score >= fianllyScore) {
+              winOrFailModal('win');
+              setCurrentScore(preScore => boosterScore2x ? preScore + item.score * 2 : preScore + item.score); // add the coin's score
+            }
+            else {
+              setCurrentScore(preScore => boosterScore2x ? preScore + item.score * 2 : preScore + item.score); // add the coin's score
+            }
+          }
+          else {                            // booster coin
+            if (item.score === 'x2') {
+              console.log('x2 =====> 🚀', `x2`);
+              setBoosterScore2x(true);
+              setTimeout(() => {
+                let width = item.wid;
+                setBoosterIcons(prevItem => {
+                  return [...prevItem].filter(it => it.url !== item.url || it.wid !== width);
+                });
+              }, 10000);
+            }
+
+            if (item.score === 'bomb') {
+              console.log('bomb =====> 🚀', `bomb`);
+              if (!boosterShield) {
+                setHealth(preHealth => preHealth.map((item) => 0))
+                winOrFailModal('lose');
+              }
+            }
+
+            if (item.score === 'speedup') {
+              console.log('speedup =====> 🚀', `speedup`);
+              setSpeed(speed - 1 -1000);
+              setTimeout(() => {
+                let width = item.wid;
+                setBoosterIcons(prevItem => [...prevItem].filter(it => it.url !== item.url || it.wid !== width))
+              }, 10000)
+            }
+
+            if (item.score === 'slow') {
+              console.log('slow =====> 🚀', `slow`);
+              setSpeed(speed - 1 + 1000);
+              setTimeout(() => {
+                let width = item.wid;
+                setBoosterIcons(prevItem => [...prevItem].filter(it => it.url !== item.url || it.wid !== width))
+              }, 10000)
+            }
+
+            if (item.score === 'fullhealth') {
+              console.log('fullhealth =====> 🚀', `fullhealth`);
+              setHealth(preHealth => preHealth.map((it) => 1))
+            }
+
+            if (item.score === 'health') {
+              setHealth((preHealth) => {
+                let boosterHealth = true;
+                const newHealth = preHealth.map((it) => {
+                  if (it === 0 && boosterHealth === true) {
+                    boosterHealth = false
+                    return 1;
+                  }
+                  return it;
+                }
+                )
+                return newHealth
+              })
+            }
+
+            if (item.score === 'shield') {
+              console.log('shield =====> 🚀', `shield`);
+              setBoosterShield(true);
+              setTimeout(() => {
+                let width = item.wid;
+                setBoosterIcons(prevItem => [...prevItem].filter(it => it.url !== item.url || it.wid !== width))
+              }, 10000)
+            }
+
+            if (item.score !== 'fullhealth' && item.score !== 'health' && item.score !== `bomb`) {
+              setBoosterIcons(prevItems => {
+                let flage = true;
+                let result = [...prevItems].map((it) => {
+                  if (it.url === item.url) {
+                    it.wid = item.wid;
+                    flage = false;
+                  }
+                  return it;
+                })
+                return (flage) ? [...result, { url: item.url, wid: item.wid, score: item.score }] : [...result]
+              })
+            }
+          }
+
+          setShowingItems(prevItem => prevItem.filter(it => it !== item))
+
+        }
+      }
+    })
+
+    // setSpeed(prevSpeed => prevSpeed + 1);
   };
+
+  useEffect(() => {
+    const x2result = boosterIcons.filter((item) => item.score === 'x2');
+    if (x2result.length <= 0) {
+      setBoosterScore2x(false)
+    }
+
+    const speedupResult = boosterIcons.filter(item => item.score === 'speedup')
+    if (speedupResult.length <= 0) {
+      setSpeed(speed + 1);
+    }
+
+    const slowResult = boosterIcons.filter(item => item.score === 'slow')
+    if (slowResult.length <= 0) {
+      setSpeed(speed + 1);
+    }
+
+    const shieldResult = boosterIcons.filter(item => item.score === 'shield')
+    if (shieldResult.length <= 0) {
+      setBoosterShield(false);
+    }
+  }, [time]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime((pre) => pre + 1)
+    }, speed);
+
+    const choose = Math.random();
+    const id = Date.now().toString();
+    const coins = coin();
+    const boosterCoins = booster();
+    const item = choose < 0.2 ?
+      <div className='w-[40px] h-[40px]'>
+        <img src={boosterCoins.item} alt="boost itme" className='w-full h-full object-cover' />
+      </div>
+      :
+      <div className="w-[40px] h-[40px]">
+        <img src={coins.item} alt="item" className="w-full h-full object-cover w-[40px] h-[40px]" />
+      </div>;
+
+    const location = Math.floor(Math.random() * 4);
+    if (previousLocation !== location) {
+      setShowingItems((prevItems) => [...prevItems, { id, item, top: location % 2 ? 10 : 160, wid: 0, pos: location < 2 ? 0 : 1, location: location, score: choose < 0.2 ? boosterCoins.score : coins.score, url: choose < 0.2 ? boosterCoins.item : coins.item }]);
+      setSpeed(speed + 1);
+    }
+    setPreviousLocation(location)
+  }, [time]);
+
+  useEffect(() => {
+    const dieResult = health.every((item) => item === 0);
+    if (dieResult) {
+      winOrFailModal('lose');
+    }
+  }, [health]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      let flage = true;
+      setShowingItems((prevItems) =>
+        prevItems
+          .map(({ id, item, top, wid, pos, location, score, url }) => ({ id, item, top: top + 0.7, wid: wid + 1, pos, location, score, url })) // Move items down
+          .filter(({ wid, score }) => {
+            if (wid < 95) return wid;
+            if (wid > 90) {
+              if (typeof score == 'number' && flage === true) {
+                setHealth((preHealth) => {
+                  let newD = [...preHealth];
+                  newD.shift()
+                  newD.push(0);
+                  return newD
+                });
+                flage = false
+              }
+            }
+          }) // Remove if off-screen
+      );
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative overflow-hidden flex flex-col h-screen">
       {/* Header */}
       <div className="flex justify-between pt-4 px-3 pb-3">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 rounded bg-[#F39932]"></div>
-          <p className="text-[16px] text-white">Username</p>
+          <Image className="w-8 h-8 rounded" src={avatarUrl} alt={avatarUrl} />
+          <p className="text-[16px] text-white">{displayName}</p>
         </div>
         <div className="text-right text-sm font-medium">
           <h6 className="text-white">Общая прибыль</h6>
@@ -52,9 +267,11 @@ const Play = () => {
 
       {/* Main Content */}
       <div className="relative flex-grow">
+
         {/* Background and blur elements */}
         <div className="absolute w-full border-t-2 border-[#F39932] h-full rounded-t-[15px] opacity-50 bg-[#F39932]"></div>
         <div className="absolute w-full h-full rounded-t-[15px] opacity-50 bg-[#F39932] blur-[25px]"></div>
+        <div className="absolute w-full h-full top-[-3px] rounded-t-[15px] rounded-br-none rounded-bl-none bg-[#F39932] opacity-50"></div>
 
         {/* Main Effect */}
         <div className="absolute top-0 h-full w-full rounded-t-[15px] bg-[#0F0902]">
@@ -79,8 +296,13 @@ const Play = () => {
               ))}
             </p>
             <h5 className="text-[24px] font-medium">
-              10/<span className="text-[#767676]">1000</span>
+              {currentScore}/<span className="text-[#767676]">{fianllyScore}</span>
             </h5>
+            <div className="flex justify-center w-full h-[30px] gap-1">
+              {boosterIcons.map((item) => (
+                <Image key={item.wid} className="bg-white w-[30px] h-[30px] rounded-full" src={item.url} alt="booster Items" />
+              ))}
+            </div>
           </div>
           <div className="relative flex justify-center pt-[10vh]">
             {/* Background Glow */}
@@ -105,7 +327,7 @@ const Play = () => {
               backgroundPosition: "center",
             }}
           >
-            <div className="relative w-full h-full pt-[15vh]">
+            <div className="relative w-full h-full mt-[15vh]">
               {/* Left Icons */}
               <div className="absolute left-0 flex flex-col space-y-2">
                 <Image src={VectorLeftIcon} alt="Vector Left Icon 1" />
@@ -117,7 +339,22 @@ const Play = () => {
                 <Image src={VectorRightIcon} alt="Vector Right Icon 1" />
                 <Image src={VectorRightIcon} alt="Vector Right Icon 2" />
               </div>
+              {showingItems.map(({ id, item, top, wid, pos }) =>
+              (
+                pos ?
+                  <div key={id} className={`absolute transform `} style={{ top: `${top}px`, right: `${wid}px` }}>
+                    {item}
+                  </div>
+                  :
+                  <div key={id} className={`absolute transform `} style={{ top: `${top}px`, left: `${wid}px` }}>
+                    {item}
+                  </div>
+
+              )
+              )}
+
             </div>
+
           </div>
 
           {/* Button Section */}
@@ -125,7 +362,7 @@ const Play = () => {
             <div className="flex justify-around">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos(Boxlion_left, 1)}
+                onClick={() => changePos(Boxlion_left, 1, 1)}
                 aria-label="Move Left"
               >
                 <svg
@@ -143,7 +380,7 @@ const Play = () => {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos(Boxlion_right, -1)}
+                onClick={() => changePos(Boxlion_right, -1, 1)}
                 aria-label="Move Right"
               >
                 <svg
@@ -163,7 +400,7 @@ const Play = () => {
             <div className="flex justify-between">
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos(Boxlion_left, 1)}
+                onClick={() => changePos(Boxlion_left, 1, -1)}
                 aria-label="Move Left Again"
               >
                 <svg
@@ -181,7 +418,7 @@ const Play = () => {
               </Button>
               <Button
                 className="w-[70px] h-[70px] bg-[#F39932] rounded-full"
-                onClick={() => changePos(Boxlion_right, -1)}
+                onClick={() => changePos(Boxlion_right, -1, -1)}
                 aria-label="Move Right Again"
               >
                 <svg
@@ -204,7 +441,7 @@ const Play = () => {
 
       {/* Win Modal */}
       <ClaimModal isOpen={showModal} />
-    </div>
+    </div >
   );
 };
 

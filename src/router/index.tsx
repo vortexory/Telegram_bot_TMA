@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import ProtectedRoute from "@/router/ProtectedRoute";
 import Claim from "@/pages/Claim";
 import Home from "@/pages/Home";
 import Play from "@/pages/Play";
@@ -11,14 +12,63 @@ import Card from "@/pages/Card";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
       <Route path="/claim" element={<Claim />} />
-      <Route path="/play" element={<Play />} />
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/leaders" element={<Leaderboard />} />
-      <Route path="/friends" element={<Friends />} />
-      <Route path="/quests" element={<Quests />} />
-      <Route path="/card" element={<Card />} />
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/play"
+        element={
+          <ProtectedRoute>
+            <Play />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/shop"
+        element={
+          <ProtectedRoute>
+            <Shop />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/leaders"
+        element={
+          <ProtectedRoute>
+            <Leaderboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/friends"
+        element={
+          <ProtectedRoute>
+            <Friends />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/quests"
+        element={
+          <ProtectedRoute>
+            <Quests />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/card"
+        element={
+          <ProtectedRoute>
+            <Card />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 };

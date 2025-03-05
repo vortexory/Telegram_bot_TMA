@@ -39,26 +39,28 @@ const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
           className
         )}
       >
-        <div className="absolute rounded-t-[15px] top-0 left-0 bg-[#25180a7e] backdrop-blur-[25px] w-full h-full"></div>
+        <div className="absolute rounded-t-[15px] top-0 left-0 bg-[#2a1c0cd1] backdrop-blur-[25px] w-full h-full"></div>
         <button className="absolute top-5 right-5" onClick={onClose}>
           <img src={Cancel_btn} alt="btn" />
         </button>
-        <div className="flex flex-col items-center z-[100]">
-          <p className="text-base text-white opacity-40 font-medium">
+        <div className="flex flex-col items-center z-[100] leading-[1]">
+          <p className="text-[16px] text-white opacity-40 font-medium">
             Confirm your purchase
           </p>
-          <h3 className="text-[40px] relative font-semibold text-white">
+          <h4 className="text-[40px] py-[10px] relative font-semibold text-white">
             {title}
-          </h3>
+          </h4>
           <img
             src={img}
             alt={img}
             className="relative h-[145px] w-[132.39px]"
           />
-          <p className="text-xs relative text-white mt-[15px] px-[70px]">
+          <p className="text-xs relative text-white mt-[15px] w-[240px]">
             {description}
           </p>
-          <p className="text-white font-medium my-[10px]">Cost: {cost}$King</p>
+          <p className="text-white relative font-medium pt-[20px] pb-[10px]">
+            Cost: {cost}$King
+          </p>
           <div className="flex w-full flex-col space-y-1 relative z-[100]">
             <button
               className="relative w-full bg-[#F39932] h-[55px] text-white text-2xl font-bold rounded-xl py-2 px-4"
